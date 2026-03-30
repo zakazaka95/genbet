@@ -1,5 +1,5 @@
 import { createClient, createAccount } from "genlayer-js";
-import { simulator } from "genlayer-js/chains";
+import { localnet } from "genlayer-js/chains";
 
 const CONTRACT_ADDRESS = "0xb0533AD764C661E0E105Ac16c0e7a2EB75D992De" as const;
 
@@ -7,7 +7,7 @@ const account = createAccount();
 
 export const client = createClient({
   chain: {
-    ...simulator,
+    ...localnet,
     rpcUrls: {
       default: { http: ["https://studio.genlayer.com/api"] },
     },
