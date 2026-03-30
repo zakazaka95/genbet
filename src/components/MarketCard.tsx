@@ -78,7 +78,7 @@ export function MarketCard({ market, index, onResolved }: MarketCardProps) {
             Target Price
           </p>
           <p className="text-lg font-bold font-mono text-primary">
-            ${Number(market.target_price).toLocaleString()}
+            ${market.target_price != null ? Number(market.target_price).toLocaleString() : "—"}
           </p>
         </div>
         <div className="rounded-md bg-secondary/50 p-3">
@@ -86,7 +86,7 @@ export function MarketCard({ market, index, onResolved }: MarketCardProps) {
             Resolution Date
           </p>
           <p className="text-sm font-mono text-foreground">
-            {market.resolution_date}
+            {market.resolution_date ?? "—"}
           </p>
         </div>
       </div>

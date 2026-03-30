@@ -50,7 +50,8 @@ export async function getMarket(index: number): Promise<Market> {
     functionName: "get_market",
     args: [index],
   });
-  return result as unknown as Market;
+  const parsed = typeof result === "string" ? JSON.parse(result) : result;
+  return parsed as Market;
 }
 
 export async function createMarket(
@@ -61,7 +62,7 @@ export async function createMarket(
   const txHash = await client.writeContract({
     address: CONTRACT_ADDRESS,
     functionName: "create_market",
-    args: [asset, targetPrice, resolutionDate],
+    args: [asset, BigInt(targetPrice), resolutionDate],
     value: 0n,
   });
   return txHash as string;
