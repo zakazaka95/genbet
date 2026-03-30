@@ -57,6 +57,7 @@ export async function createMarket(
     address: CONTRACT_ADDRESS,
     functionName: "create_market",
     args: [asset, targetPrice, resolutionDate],
+    value: 0n,
   });
   return txHash as string;
 }
