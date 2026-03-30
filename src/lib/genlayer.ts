@@ -6,7 +6,12 @@ const CONTRACT_ADDRESS = "0xb0533AD764C661E0E105Ac16c0e7a2EB75D992De" as const;
 const account = createAccount();
 
 export const client = createClient({
-  chain: localnet,
+  chain: {
+    ...localnet,
+    rpcUrls: {
+      default: { http: ["https://studio.genlayer.com/api"] },
+    },
+  },
   account,
 });
 
