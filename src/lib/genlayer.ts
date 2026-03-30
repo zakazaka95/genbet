@@ -50,7 +50,8 @@ export async function getMarket(index: number): Promise<Market> {
     functionName: "get_market",
     args: [index],
   });
-  return result as unknown as Market;
+  const parsed = typeof result === "string" ? JSON.parse(result) : result;
+  return parsed as Market;
 }
 
 export async function createMarket(
