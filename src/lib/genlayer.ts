@@ -62,7 +62,7 @@ export async function createMarket(
   const txHash = await client.writeContract({
     address: CONTRACT_ADDRESS,
     functionName: "create_market",
-    args: [asset, targetPrice, resolutionDate],
+    args: [asset, BigInt(targetPrice), resolutionDate],
     value: 0n,
   });
   return txHash as string;

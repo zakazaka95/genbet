@@ -86,7 +86,7 @@ export function MarketCard({ market, index, onResolved }: MarketCardProps) {
             Resolution Date
           </p>
           <p className="text-sm font-mono text-foreground">
-            {market.resolution_date}
+            {market.resolution_date ?? "—"}
           </p>
         </div>
       </div>
