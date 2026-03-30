@@ -67,6 +67,7 @@ export async function resolveMarket(marketId: number): Promise<string> {
     address: CONTRACT_ADDRESS,
     functionName: "resolve_market",
     args: [marketId],
+    value: 0n,
   });
   return txHash as string;
 }
