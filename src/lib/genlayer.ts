@@ -45,7 +45,7 @@ export async function getMarket(index: number): Promise<Market> {
     functionName: "get_market",
     args: [index],
   });
-  return result as Market;
+  return result as unknown as Market;
 }
 
 export async function createMarket(
