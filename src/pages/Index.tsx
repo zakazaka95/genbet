@@ -39,31 +39,36 @@ export default function Index() {
   }, [fetchMarkets]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <TopBar onCreateMarket={() => setModalOpen(true)} />
 
-      <main className="container py-8">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold font-heading gradient-gold-text mb-2">
-            Prediction Markets
+      <main className="container py-10 flex-1">
+        {/* Hero */}
+        <div className="mb-10">
+          <h2 className="text-4xl font-bold font-heading tracking-tight text-foreground mb-2 glow-orange">
+            Predict. Resolve. Win.
           </h2>
-          <p className="text-muted-foreground text-sm">
-            AI-powered crypto price predictions on GenLayer
+          <p className="text-sm text-muted-foreground">
+            <span className="relative inline-block">
+              <span className="text-primary">AI-powered</span>
+              <span className="absolute bottom-0 left-0 h-px bg-primary animate-underline-draw" />
+            </span>
+            {" "}prediction markets on GenLayer
           </p>
         </div>
 
         {loading && (
           <div className="flex flex-col items-center justify-center py-20">
-            <div className="h-8 w-8 rounded-full border-2 border-primary border-t-transparent animate-spin-slow mb-4" />
-            <p className="text-muted-foreground font-mono text-sm">
-              Loading markets...
+            <div className="h-5 w-5 rounded-full border-[1.5px] border-primary border-t-transparent animate-spin mb-4" />
+            <p className="text-muted-foreground font-mono text-xs">
+              Loading markets…
             </p>
           </div>
         )}
 
         {error && !loading && (
-          <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-6 text-center">
-            <p className="text-destructive font-mono text-sm">{error}</p>
+          <div className="rounded-sm border border-destructive/30 bg-destructive/5 p-6 text-center">
+            <p className="text-destructive font-mono text-xs">{error}</p>
             <button
               onClick={fetchMarkets}
               className="mt-2 text-xs text-primary hover:underline font-mono"
@@ -74,10 +79,9 @@ export default function Index() {
         )}
 
         {!loading && !error && markets.length === 0 && (
-          <div className="rounded-lg border border-border bg-card p-12 text-center">
-            <p className="text-4xl mb-3">🏜️</p>
-            <p className="text-muted-foreground font-heading">
-              No markets yet. Create the first one!
+          <div className="rounded-sm border border-border bg-card p-12 text-center">
+            <p className="text-muted-foreground font-mono text-sm">
+              No markets yet. Create the first one.
             </p>
           </div>
         )}
@@ -93,6 +97,13 @@ export default function Index() {
           ))}
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="border-t border-border py-5">
+        <p className="text-center text-xs text-muted-foreground">
+          Made by Zaksans
+        </p>
+      </footer>
 
       <CreateMarketModal
         open={modalOpen}
