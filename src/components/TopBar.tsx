@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { GenBetLogo } from "@/components/GenBetLogo";
+import { Plus } from "lucide-react";
 
 interface TopBarProps {
   onCreateMarket: () => void;
@@ -6,19 +8,23 @@ interface TopBarProps {
 
 export function TopBar({ onCreateMarket }: TopBarProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="text-2xl">🎯</span>
-          <h1 className="text-xl font-bold font-heading gradient-gold-text">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
+      <div className="container flex h-14 items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <GenBetLogo />
+          <span className="text-lg font-bold font-heading tracking-tight text-foreground">
             GenBet
-          </h1>
-          <span className="ml-2 rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[10px] font-mono text-primary">
-            TESTNET
+          </span>
+          <span className="text-[9px] font-mono text-muted-foreground/50 uppercase tracking-widest ml-1">
+            testnet
           </span>
         </div>
-        <Button onClick={onCreateMarket} className="gradient-gold font-semibold glow-primary">
-          <span className="mr-1">➕</span> Create Market
+        <Button
+          onClick={onCreateMarket}
+          className="h-9 rounded-sm bg-primary text-primary-foreground font-semibold text-xs uppercase tracking-wider hover:bg-primary/90 px-5"
+        >
+          <Plus className="h-3.5 w-3.5 mr-1" strokeWidth={2.5} />
+          Create Market
         </Button>
       </div>
     </header>

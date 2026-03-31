@@ -60,21 +60,21 @@ export function CreateMarketModal({ open, onClose, onCreated }: CreateMarketModa
 
   return (
     <Dialog open={open} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="bg-card border-border sm:max-w-md">
+      <DialogContent className="bg-card border-border sm:max-w-md rounded-sm">
         <DialogHeader>
-          <DialogTitle className="font-heading gradient-gold-text text-xl">
-            Create Prediction Market
+          <DialogTitle className="font-heading text-foreground text-lg tracking-tight">
+            Create Market
           </DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4 pt-2">
           <div className="space-y-2">
-            <Label className="text-muted-foreground text-xs uppercase tracking-wider">Asset</Label>
+            <Label className="text-muted-foreground text-[10px] uppercase tracking-wider font-mono">Asset</Label>
             <Select value={asset} onValueChange={setAsset}>
-              <SelectTrigger className="bg-secondary border-border">
+              <SelectTrigger className="bg-secondary border-border rounded-sm">
                 <SelectValue placeholder="Select asset" />
               </SelectTrigger>
-              <SelectContent className="bg-popover border-border">
+              <SelectContent className="bg-popover border-border rounded-sm">
                 {ASSETS.map((a) => {
                   const d = getAssetDisplay(a);
                   return (
@@ -88,24 +88,24 @@ export function CreateMarketModal({ open, onClose, onCreated }: CreateMarketModa
           </div>
 
           <div className="space-y-2">
-            <Label className="text-muted-foreground text-xs uppercase tracking-wider">Target Price (USD)</Label>
+            <Label className="text-muted-foreground text-[10px] uppercase tracking-wider font-mono">Target Price (USD)</Label>
             <Input
               type="number"
               placeholder="e.g. 100000"
               value={targetPrice}
               onChange={(e) => setTargetPrice(e.target.value)}
-              className="bg-secondary border-border font-mono"
+              className="bg-secondary border-border font-mono rounded-sm"
             />
           </div>
 
           <div className="space-y-2">
-            <Label className="text-muted-foreground text-xs uppercase tracking-wider">Resolution Date</Label>
+            <Label className="text-muted-foreground text-[10px] uppercase tracking-wider font-mono">Resolution Date</Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-full justify-start text-left font-mono bg-secondary border-border",
+                    "w-full justify-start text-left font-mono bg-secondary border-border rounded-sm",
                     !date && "text-muted-foreground"
                   )}
                 >
@@ -113,7 +113,7 @@ export function CreateMarketModal({ open, onClose, onCreated }: CreateMarketModa
                   {date ? format(date, "yyyy-MM-dd") : "Pick a date"}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 bg-popover border-border" align="start">
+              <PopoverContent className="w-auto p-0 bg-popover border-border rounded-sm" align="start">
                 <Calendar
                   mode="single"
                   selected={date}
@@ -127,21 +127,21 @@ export function CreateMarketModal({ open, onClose, onCreated }: CreateMarketModa
           </div>
 
           {error && (
-            <p className="text-xs text-destructive font-mono">{error}</p>
+            <p className="text-[11px] text-destructive font-mono">{error}</p>
           )}
 
           <Button
             onClick={handleSubmit}
             disabled={loading || !asset || !targetPrice || !date}
-            className="w-full gradient-gold font-semibold glow-primary"
+            className="w-full rounded-sm bg-primary text-primary-foreground font-semibold text-xs uppercase tracking-wider hover:bg-primary/90 h-10"
           >
             {loading ? (
               <span className="flex items-center gap-2">
-                <div className="h-4 w-4 rounded-full border-2 border-primary-foreground border-t-transparent animate-spin" />
-                Creating...
+                <div className="h-3.5 w-3.5 rounded-full border-[1.5px] border-primary-foreground border-t-transparent animate-spin" />
+                Creating…
               </span>
             ) : (
-              "🚀 Create Market"
+              "Create Market"
             )}
           </Button>
         </div>
